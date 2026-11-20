@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diego Angeles</title>
+<meta name="description" content="Diego Angeles Valencia · Supply Chain & Data · Madrid">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<style>
+/* VOICE occasion, personal card handed out at a job fair: confident, warm, quick to scan on a phone
+   IDEA a shipping label stuck on a kraft box: a parcel sent from Ciudad de México to Madrid
+   PICTURE the label itself: route CDMX → MAD, contents, tracking code, barcode, and the action buttons
+   COLOUR kraft cardboard ground, label white, ink near-black, signal orange for the main action
+   TYPE Archivo expanded 800 for the name and route, Archivo for text
+   LAYOUT phone first: label fills the screen, buttons on it; laptop: label centred, skills band below */
+:root{color-scheme:light dark;--bg:light-dark(#c9a173,#2b2118);--bg2:light-dark(#b88f60,#221a12);--label:light-dark(#fffdf8,#f4efe4);--ink:#15130f;--muted:#5d564b;--rule:#15130f;--acc:#ff5a1f;--acc-ink:#fff;--page-ink:light-dark(#2a1d10,#f1e6d6)}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html,body{margin:0}
+body{background:var(--bg);color:var(--page-ink);font:16px/1.5 "Archivo",system-ui,sans-serif;overflow-x:clip;min-height:100svh}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(90deg,transparent 0 46px,color-mix(in srgb,var(--bg2) 55%,transparent) 46px 48px);opacity:.45}
+a{color:inherit}
+.wrap{position:relative;max-width:1040px;margin:0 auto;padding:clamp(16px,4vw,48px) max(16px,4vw)}
+.tape{position:absolute;top:clamp(4px,1.5vw,20px);left:50%;width:min(220px,46%);height:34px;transform:translateX(-50%) rotate(-1.5deg);background:color-mix(in srgb,#e9d9b8 70%,transparent);box-shadow:0 1px 0 rgba(0,0,0,.08);z-index:2}
+.label{position:relative;max-width:560px;margin:14px auto 0;background:var(--label);color:var(--ink);border:2px solid var(--rule);box-shadow:6px 8px 0 rgba(0,0,0,.18);transform:rotate(.4deg)}
+.row{border-bottom:2px solid var(--rule);padding:14px 18px}
+.row:last-child{border-bottom:0}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.lang{display:flex;border:2px solid var(--ink)}
+.lang button{font:600 14px "Archivo",sans-serif;background:none;border:0;color:var(--ink);padding:6px 12px;min-height:36px;cursor:pointer}
+.lang button[aria-pressed=true]{background:var(--ink);color:var(--label)}
+.lang button:focus-visible,.btn:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.priority{font:900 15px/1 "Archivo",sans-serif;font-stretch:112%;letter-spacing:.01em;background:var(--ink);color:var(--label);padding:8px 10px}
+.route{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:end;gap:10px}
+.end small{display:block;font-size:13px;color:var(--muted)}
+.end b{display:block;font:900 clamp(40px,12vw,64px)/1 "Archivo",sans-serif;font-stretch:118%;letter-spacing:-.02em}
+.end span{font-size:14px;color:var(--muted);white-space:nowrap}
+.end.to{text-align:right}
+.plane{width:clamp(56px,16vw,96px);height:40px;align-self:center}
+.who{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center}
+.mono{width:76px;height:76px;border:2px solid var(--ink);display:grid;place-items:center;font:900 30px "Archivo",sans-serif;font-stretch:120%;background:var(--acc);color:var(--acc-ink);overflow:hidden}
+.mono img{width:100%;height:100%;object-fit:cover}
+h1{font:800 clamp(28px,7vw,40px)/1.05 "Archivo",sans-serif;font-stretch:105%;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.role{margin:4px 0 0;font-weight:600;font-size:17px}
+.meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.meta>div{padding:12px 18px;border-right:2px solid var(--rule)}
+.meta>div:last-child{border-right:0}
+.meta small{display:block;font-size:13px;color:var(--muted)}
+.meta p{margin:2px 0 0;font-weight:600;line-height:1.35}
+.actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.btn{display:flex;align-items:center;gap:10px;min-height:54px;padding:10px 14px;border:2px solid var(--ink);background:var(--label);color:var(--ink);text-decoration:none;font:700 16px "Archivo",sans-serif;cursor:pointer;transition:transform .12s,box-shadow .12s}
+.btn svg{width:22px;height:22px;flex:none}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:3px 3px 0 var(--ink)}
+.btn.main{grid-column:1/-1;background:var(--acc);color:var(--acc-ink);border-color:var(--ink);font-size:18px;min-height:60px}
+.btn .sub{display:block;font-weight:500;font-size:13px;opacity:.85}
+.contact-line{margin:10px 0 0;font-size:14px;color:var(--muted);overflow-wrap:anywhere}
+.bar{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:end}
+.bar svg{width:100%;height:64px;display:block}
+.track{font:700 14px "Archivo",sans-serif;font-stretch:110%;white-space:nowrap;text-align:right}
+.track small{display:block;font-weight:400;color:var(--muted);font-size:13px}
+.band{max-width:900px;margin:clamp(28px,5vw,56px) auto 0;color:var(--page-ink)}
+.band h2{font:800 clamp(24px,4vw,32px)/1.1 "Archivo",sans-serif;font-stretch:108%;letter-spacing:-.02em;margin:0 0 16px}
+.skills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.skill{background:var(--label);color:var(--ink);border:2px solid var(--rule);padding:14px 16px}
+.skill b{display:block;font-size:17px;line-height:1.2}
+.skill p{margin:6px 0 0;font-size:15px;color:var(--muted)}
+.path{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:2px solid currentColor}
+.path li{padding:12px 12px 0 0;position:relative}
+.path li::before{content:"";position:absolute;top:-8px;left:0;width:14px;height:14px;border-radius:50%;background:var(--page-ink);border:3px solid var(--bg)}
+.path li.now::before{background:var(--acc)}
+.path b{display:block;font-size:16px}
+.path span{font-size:14px;opacity:.85}
+footer{max-width:900px;margin:40px auto 0;padding-bottom:24px;font-size:14px;opacity:.85;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:700px){.skills{grid-template-columns:minmax(0,1fr)}.path{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:18px;border-top:0}.path li{border-top:2px solid currentColor;padding-top:14px}.path li::before{top:-8px}}
+@media(max-width:420px){.actions{grid-template-columns:minmax(0,1fr)}.meta{grid-template-columns:minmax(0,1fr)}.meta>div{border-right:0;border-bottom:2px solid var(--rule)}.meta>div:last-child{border-bottom:0}.row{padding:12px 14px}.mono{width:64px;height:64px}}
+@media(prefers-reduced-motion:reduce){.btn{transition:none}.label{transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="tape" aria-hidden="true"></div>
+  <article class="label" aria-label="Tarjeta de Diego Angeles">
+    <div class="row top">
+      <span class="priority" data-es="PRÁCTICAS · PRIORITARIO" data-en="INTERNSHIP · PRIORITY">PRÁCTICAS · PRIORITARIO</span>
+      <div class="lang" role="group" aria-label="Idioma">
+        <button id="l-es" type="button" aria-pressed="true">ES</button>
+        <button id="l-en" type="button" aria-pressed="false">EN</button>
+      </div>
+    </div>
+    <div class="row route">
+      <div class="end"><small data-es="Origen" data-en="From">Origen</small><b>MEX</b><span>Ciudad de México</span></div>
+      <svg class="plane" viewBox="0 0 96 40" aria-hidden="true"><path d="M2 30 Q48 2 94 22" fill="none" stroke="#15130f" stroke-width="2.5" stroke-dasharray="5 5"/><path d="M80 12 l14 10 -16 3z" fill="#ff5a1f" stroke="#15130f" stroke-width="2"/></svg>
+      <div class="end to"><small data-es="Destino" data-en="To">Destino</small><b>MAD</b><span>Madrid</span></div>
+    </div>
+    <div class="row who">
+      <div class="mono" id="mono">DA</div>
+      <div>
+        <h1>Diego Angeles Valencia</h1>
+        <p class="role" data-es="Supply Chain &amp; Data · Demand Planning · CPFR" data-en="Supply Chain &amp; Data · Demand Planning · CPFR">Supply Chain &amp; Data · Demand Planning · CPFR</p>
+      </div>
+    </div>
+    <div class="meta">
+      <div><small data-es="Contenido" data-en="Contents">Contenido</small><p data-es="12 años en Supply Chain · ex‑Colgate‑Palmolive" data-en="12 years in Supply Chain · ex‑Colgate‑Palmolive">12 años en Supply Chain · ex‑Colgate‑Palmolive</p></div>
+      <div><small data-es="Disponible" data-en="Available">Disponible</small><p data-es="Prácticas de mañana con convenio · hasta 30 h/sem" data-en="Morning internship via university agreement · up to 30 h/wk">Prácticas de mañana con convenio · hasta 30 h/sem</p></div>
+    </div>
+    <div class="row actions" id="actions">
+      <a class="btn main" id="b-li" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H9z"/></svg><span><span data-es="Conectar en LinkedIn" data-en="Connect on LinkedIn">Conectar en LinkedIn</span></span></a>
+      <a class="btn" id="b-wa" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3 1 2.6 1.1 2.8.1.2 1.9 2.9 4.6 4 1.7.7 2.4.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></svg><span>WhatsApp</span></a>
+      <a class="btn" id="b-cv" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6M9 13h8M9 17h8"/></svg><span><span data-es="Ver mi CV" data-en="View my CV">Ver mi CV</span><span class="sub">PDF</span></span></a>
+      <a class="btn" id="b-mail" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14"/><path d="m3 6 9 7 9-7"/></svg><span>Email</span></a>
+      <a class="btn" id="b-vcf" href="#" download="Diego-Angeles.vcf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg><span data-es="Guardar contacto" data-en="Save contact">Guardar contacto</span></a>
+    </div>
+    <div class="row" style="padding-top:0;border-bottom:2px solid var(--rule)"><p class="contact-line" id="contact-line"></p></div>
+    <div class="row bar">
+      <svg id="barcode" role="img" aria-label="Código de barras decorativo"></svg>
+      <div class="track"><small data-es="N.º de seguimiento" data-en="Tracking no.">N.º de seguimiento</small>DAV-MAD-2027</div>
+    </div>
+  </article>
+
+  <section class="band">
+    <h2 data-es="Qué llega en este envío" data-en="What's inside this parcel">Qué llega en este envío</h2>
+    <div class="skills">
+      <div class="skill"><b data-es="Colaboración con retailers" data-en="Retailer collaboration">Colaboración con retailers</b><p data-es="CPFR, S&amp;OP y Customer Service con grandes cadenas como Walmart (Retail Link)." data-en="CPFR, S&amp;OP and Customer Service with major chains such as Walmart (Retail Link).">CPFR, S&amp;OP y Customer Service con grandes cadenas como Walmart (Retail Link).</p></div>
+      <div class="skill"><b data-es="Planificación de la demanda" data-en="Demand planning">Planificación de la demanda</b><p data-es="Forecasting estadístico, nivel de servicio, OTIF, fill rate e inventario." data-en="Statistical forecasting, service level, OTIF, fill rate and inventory.">Forecasting estadístico, nivel de servicio, OTIF, fill rate e inventario.</p></div>
+      <div class="skill"><b data-es="Datos y BI" data-en="Data &amp; BI">Datos y BI</b><p data-es="Estadística aplicada y Power BI. En el máster: aprendiendo SQL y Python para Supply Chain." data-en="Applied statistics and Power BI. In my MSc: learning SQL and Python for Supply Chain.">Estadística aplicada y Power BI. En el máster: aprendiendo SQL y Python para Supply Chain.</p></div>
+    </div>
+  </section>
+
+  <section class="band">
+    <h2 data-es="Ruta recorrida" data-en="Route so far">Ruta recorrida</h2>
+    <ol class="path">
+      <li><b>Tec de Monterrey</b><span data-es="Ing. Industrial y de Sistemas · MBA" data-en="Industrial &amp; Systems Eng. · MBA">Ing. Industrial y de Sistemas · MBA</span></li>
+      <li><b>Grupo Lala</b><span data-es="Líder en lácteos en México · Supply Chain" data-en="Mexico's leading dairy company · Supply Chain">Líder en lácteos en México · Supply Chain</span></li>
+      <li><b>Colgate-Palmolive</b><span data-es="Casi 10 años · Customer Service &amp; Collaboration Manager" data-en="Nearly 10 years · Customer Service &amp; Collaboration Manager">Casi 10 años · Customer Service &amp; Collaboration Manager</span></li>
+      <li class="now"><b>Next Educación · Madrid</b><span data-es="Máster Big Data &amp; BI · 2026–2027" data-en="MSc Big Data &amp; BI · 2026–2027">Máster Big Data &amp; BI · 2026–2027</span></li>
+    </ol>
+  </section>
+
+  <footer>
+    <span data-es="Español · English · Français" data-en="Spanish · English · French">Español · English · Français</span>
+    <span>Madrid, España</span>
+  </footer>
+</div>
+
+<script>
+{
+  // ====== EDITA AQUÍ TUS DATOS ======
+  const CONFIG = {
+    linkedin: "https://www.linkedin.com/in/diegoangelesv",
+    whatsapp: "34665218004",              // solo dígitos, con prefijo de país
+    whatsappText: "Hola Diego, te escribo tras la feria de empleo.",
+    cv: "https://drive.google.com/TU-CV",
+    email: "diego.angeles@gmail.com",
+    phoneDisplay: "+34 665 21 80 04",
+    photo: ""                             // opcional: URL data:image/... de tu foto
+  };
+  // ==================================
+
+  const $ = id => document.getElementById(id);
+  $("b-li").href = CONFIG.linkedin;
+  $("b-wa").href = "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(CONFIG.whatsappText);
+  $("b-cv").href = CONFIG.cv;
+  $("b-mail").href = "mailto:" + CONFIG.email;
+  $("contact-line").textContent = CONFIG.email + " · " + CONFIG.phoneDisplay;
+  if (CONFIG.photo) $("mono").innerHTML = '<img alt="Diego Angeles" src="' + CONFIG.photo + '">';
+
+  const vcf = ["BEGIN:VCARD","VERSION:3.0","N:Angeles Valencia;Diego;;;","FN:Diego Angeles Valencia",
+    "TITLE:Supply Chain & Data · Demand Planning · CPFR","ORG:Máster Big Data & BI · Next Educación",
+    "TEL;TYPE=CELL:+" + CONFIG.whatsapp,"EMAIL:" + CONFIG.email,"URL:" + CONFIG.linkedin,
+    "ADR;TYPE=HOME:;;;Madrid;;;España","END:VCARD"].join("\r\n");
+  $("b-vcf").href = "data:text/vcard;charset=utf-8," + encodeURIComponent(vcf);
+  let framed = true;
+  try { framed = window.self !== window.top; } catch (e) { framed = true; }
+  if (framed) $("b-vcf").remove();
+
+  const setLang = l => {
+    document.documentElement.lang = l;
+    document.querySelectorAll("[data-es]").forEach(el => { el.innerHTML = el.dataset[l]; });
+    $("l-es").setAttribute("aria-pressed", l === "es");
+    $("l-en").setAttribute("aria-pressed", l === "en");
+    try { localStorage.setItem("lang", l); } catch (e) {}
+  };
+  $("l-es").addEventListener("click", () => setLang("es"));
+  $("l-en").addEventListener("click", () => setLang("en"));
+  let saved = null;
+  try { saved = localStorage.getItem("lang"); } catch (e) {}
+  if (saved === "en") setLang("en");
+
+  const bc = $("barcode");
+  const drawBars = () => {
+    const W = bc.clientWidth || 300, H = 64;
+    let s = 20261125, x = 0, out = "";
+    while (x < W) {
+      s = s * 16807 % 2147483647;
+      const w = 1 + s % 4;
+      s = s * 16807 % 2147483647;
+      const gap = 1 + s % 3;
+      if (x + w > W) break;
+      out += '<rect x="' + x + '" y="0" width="' + w + '" height="' + H + '" fill="#15130f"/>';
+      x += w + gap;
+    }
+    bc.setAttribute("viewBox", "0 0 " + W + " " + H);
+    bc.innerHTML = out;
+  };
+  const ro = new ResizeObserver(drawBars);
+  ro.observe(bc);
+}
+</script>
+</body>
+</html>
