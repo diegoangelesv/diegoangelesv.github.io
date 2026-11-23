@@ -63,6 +63,13 @@ h1{font:800 clamp(28px,7vw,40px)/1.05 "Archivo",sans-serif;font-stretch:105%;let
 .track small{display:block;font-weight:400;color:var(--muted);font-size:13px}
 .band{max-width:900px;margin:clamp(28px,5vw,56px) auto 0;color:var(--page-ink)}
 .band h2{font:800 clamp(24px,4vw,32px)/1.1 "Archivo",sans-serif;font-stretch:108%;letter-spacing:-.02em;margin:0 0 16px}
+.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.kpi{background:var(--label);color:var(--ink);border:2px solid var(--rule);padding:16px 16px 14px;box-shadow:4px 5px 0 rgba(0,0,0,.14)}
+.kpi b{display:block;font:900 clamp(36px,7vw,52px)/1 "Archivo",sans-serif;font-stretch:115%;letter-spacing:-.02em;white-space:nowrap}
+.kpi b small{font-size:.5em;font-weight:800;color:var(--acc)}
+.kpi span{display:block;font-weight:700;font-size:16px;margin-top:8px}
+.kpi p{margin:4px 0 0;font-size:14px;color:var(--muted);line-height:1.4}
+.band .lead{margin:-8px 0 16px;font-size:16px;max-width:62ch}
 .skills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .skill{background:var(--label);color:var(--ink);border:2px solid var(--rule);padding:14px 16px}
 .skill b{display:block;font-size:17px;line-height:1.2}
@@ -72,11 +79,23 @@ h1{font:800 clamp(28px,7vw,40px)/1.05 "Archivo",sans-serif;font-stretch:105%;let
 .path li::before{content:"";position:absolute;top:-8px;left:0;width:14px;height:14px;border-radius:50%;background:var(--page-ink);border:3px solid var(--bg)}
 .path li.now::before{background:var(--acc)}
 .path b{display:block;font-size:16px}
-.path span{font-size:14px;opacity:.85}
+.path span{font-size:14px;opacity:.85;display:block}
+.path em{display:block;font-style:normal;font-weight:700;font-size:14px;color:var(--page-ink);opacity:.75}
+.path li.now{background:var(--label);color:var(--ink);border:2px solid var(--ink);box-shadow:4px 5px 0 var(--acc);padding:10px 12px;margin-top:10px}
+.path li.now::before{width:18px;height:18px;top:-20px;left:10px;background:var(--acc);box-shadow:0 0 0 0 rgba(255,90,31,.6);animation:ping 2s ease-out infinite}
+.path li.now em{color:var(--ink);opacity:1}
+.path li.now span{opacity:1;color:var(--muted)}
+.path li.now .here{color:#fff;display:inline-block;background:var(--acc);color:#fff;font:800 13px/1 "Archivo",sans-serif;padding:5px 8px;margin-bottom:6px}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(255,90,31,.6)}80%,100%{box-shadow:0 0 0 12px rgba(255,90,31,0)}}
 footer{max-width:900px;margin:40px auto 0;padding-bottom:24px;font-size:14px;opacity:.85;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-@media(max-width:700px){.skills{grid-template-columns:minmax(0,1fr)}.path{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:18px;border-top:0}.path li{border-top:2px solid currentColor;padding-top:14px}.path li::before{top:-8px}}
-@media(max-width:420px){.actions{grid-template-columns:minmax(0,1fr)}.meta{grid-template-columns:minmax(0,1fr)}.meta>div{border-right:0;border-bottom:2px solid var(--rule)}.meta>div:last-child{border-bottom:0}.row{padding:12px 14px}.mono{width:64px;height:64px}}
-@media(prefers-reduced-motion:reduce){.btn{transition:none}.label{transform:none}}
+@media(max-width:700px){.skills{grid-template-columns:minmax(0,1fr)}.path{grid-template-columns:minmax(0,1fr);border-top:0;border-left:2px solid currentColor;margin-left:7px;row-gap:14px}.path li{padding:0 0 0 18px}.path li::before{top:3px;left:-9px}.path li.now{margin:4px 0 0 14px;padding:10px 12px}.path li.now::before{top:12px;left:-25px}}
+@media(max-width:600px){.band{margin-top:28px}.band h2{font-size:22px;margin-bottom:10px}.band .lead{font-size:14px;margin:-4px 0 10px}
+.kpis{gap:8px}.kpi{padding:10px 8px;box-shadow:3px 3px 0 rgba(0,0,0,.14)}.kpi b{font-size:26px}.kpi span{font-size:13px;margin-top:4px}.kpi p{display:none}
+.skills{gap:0;border:2px solid var(--rule);background:var(--label)}.skill{border:0;border-bottom:2px solid var(--rule);padding:10px 12px}.skill:last-child{border-bottom:0}.skill b{font-size:15px}.skill p{font-size:14px;margin-top:2px}
+.path li{padding-top:0}.path b{font-size:15px}.path span{font-size:13px}footer{margin-top:24px}}
+@media(max-width:420px){.actions{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px}.btn{min-height:50px;padding:8px 10px;font-size:15px;gap:8px}.btn.main{min-height:54px;font-size:17px}}
+@media(max-width:420px){.meta{grid-template-columns:minmax(0,1fr)}.meta>div{border-right:0;border-bottom:2px solid var(--rule)}.meta>div:last-child{border-bottom:0}.row{padding:12px 14px}.mono{width:64px;height:64px}}
+@media(prefers-reduced-motion:reduce){.path li.now::before{animation:none}.btn{transition:none}.label{transform:none}}
 </style>
 </head>
 <body>
@@ -121,6 +140,16 @@ footer{max-width:900px;margin:40px auto 0;padding-bottom:24px;font-size:14px;opa
   </article>
 
   <section class="band">
+    <h2 data-es="Resultados que sé medir y repetir" data-en="Results I know how to measure and repeat">Resultados que sé medir y repetir</h2>
+    <p class="lead" data-es="Logrados en Colgate-Palmolive México con grandes cuentas de retail y e‑commerce." data-en="Achieved at Colgate-Palmolive Mexico with major retail and e‑commerce accounts.">Logrados en Colgate-Palmolive México con grandes cuentas de retail y e‑commerce.</p>
+    <div class="kpis">
+      <div class="kpi"><b>98<small>%</small></b><span>Fill Rate</span><p data-es="Sostenido en cuentas top, +20 puntos." data-en="Sustained in top accounts, +20 points.">Sostenido en cuentas top, +20 puntos.</p></div>
+      <div class="kpi"><b>65→80<small>%</small></b><span>OTIF</span><p data-es="Con estrategias de colaboración por tipo de cliente." data-en="Through collaboration strategies by customer type.">Con estrategias de colaboración por tipo de cliente.</p></div>
+      <div class="kpi"><b>&gt;90<small>%</small></b><span>Forecast Accuracy</span><p data-es="En el proceso CPFR con retailers." data-en="In the CPFR process with retailers.">En el proceso CPFR con retailers.</p></div>
+    </div>
+  </section>
+
+  <section class="band">
     <h2 data-es="Qué llega en este envío" data-en="What's inside this parcel">Qué llega en este envío</h2>
     <div class="skills">
       <div class="skill"><b data-es="Colaboración con retailers" data-en="Retailer collaboration">Colaboración con retailers</b><p data-es="CPFR, S&amp;OP y Customer Service con grandes cadenas como Walmart (Retail Link)." data-en="CPFR, S&amp;OP and Customer Service with major chains such as Walmart (Retail Link).">CPFR, S&amp;OP y Customer Service con grandes cadenas como Walmart (Retail Link).</p></div>
@@ -133,9 +162,9 @@ footer{max-width:900px;margin:40px auto 0;padding-bottom:24px;font-size:14px;opa
     <h2 data-es="Ruta recorrida" data-en="Route so far">Ruta recorrida</h2>
     <ol class="path">
       <li><b>Tec de Monterrey</b><span data-es="Ing. Industrial y de Sistemas · MBA" data-en="Industrial &amp; Systems Eng. · MBA">Ing. Industrial y de Sistemas · MBA</span></li>
-      <li><b>Grupo Lala</b><span data-es="Líder en lácteos en México · Supply Chain" data-en="Mexico's leading dairy company · Supply Chain">Líder en lácteos en México · Supply Chain</span></li>
-      <li><b>Colgate-Palmolive</b><span data-es="Casi 10 años · Customer Service &amp; Collaboration Manager" data-en="Nearly 10 years · Customer Service &amp; Collaboration Manager">Casi 10 años · Customer Service &amp; Collaboration Manager</span></li>
-      <li class="now"><b>Next Educación · Madrid</b><span data-es="Máster Big Data &amp; BI · 2026–2027" data-en="MSc Big Data &amp; BI · 2026–2027">Máster Big Data &amp; BI · 2026–2027</span></li>
+      <li><b>Grupo Lala</b><em>2013⁠–⁠2015</em><span data-es="Líder en lácteos en México · CPFR" data-en="Mexico's leading dairy company · CPFR">Líder en lácteos en México · CPFR</span></li>
+      <li><b>Colgate-Palmolive</b><em>2015⁠–⁠2026</em><span data-es="CPFR → Customer Service &amp; Collaboration Manager" data-en="CPFR → Customer Service &amp; Collaboration Manager">CPFR → Customer Service &amp; Collaboration Manager</span></li>
+      <li class="now"><span class="here" data-es="Aquí estoy ahora" data-en="Where I am now">Aquí estoy ahora</span><b>Next Educación · Madrid</b><em>2026⁠–⁠2027</em><span data-es="Máster Big Data &amp; BI" data-en="MSc Big Data &amp; BI">Máster Big Data &amp; BI</span></li>
     </ol>
   </section>
 
